@@ -15,9 +15,9 @@ module Commands
         parse_coordinates
         draw
       elsif !valid_format?
-        raise 'Invalid #Create command format'
+        raise 'Invalid Create command format'
       else
-        raise 'Invalid #Create command coordinates: out of allowed range'
+        raise 'Invalid Create command coordinates: out of allowed range'
       end
     end
 

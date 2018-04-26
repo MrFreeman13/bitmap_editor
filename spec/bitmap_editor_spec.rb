@@ -37,12 +37,12 @@ describe BitmapEditor do
 
     it 'should process create command for incorrect input file 1' do
       expect { subject.run('spec/fixtures/commands/create/out_of_range_coordinates.txt') }.
-        to raise_error(StandardError, 'Invalid #Create command coordinates: out of allowed range')
+        to raise_error(StandardError, 'Invalid Create command coordinates: out of allowed range')
     end
 
     it 'should process I command for incorrect input file 2' do
       expect { subject.run('spec/fixtures/commands/create/invalid_format.txt') }.
-        to raise_error(StandardError, 'Invalid #Create command format')
+        to raise_error(StandardError, 'Invalid Create command format')
     end
   end
 end
