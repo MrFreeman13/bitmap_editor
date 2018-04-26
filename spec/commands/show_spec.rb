@@ -18,5 +18,12 @@ describe Commands::Show do
         expect(command_line.valid?).to be false
       end
     end
+
+    describe '#perform' do
+      it 'should show the content of the current image' do
+        image = %w(OOOO CCCC OKKO)
+        expect { described_class.new('S', image).perform }.to output("OOOO\nCCCC\nOKKO\n").to_stdout
+      end
+    end
   end
 end
