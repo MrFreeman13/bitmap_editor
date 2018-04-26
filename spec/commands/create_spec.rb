@@ -8,6 +8,11 @@ describe Commands::Create do
         expect(command_line.valid?).to be true
       end
 
+      it 'should invalidate nil command line' do
+        command_line = described_class.new(nil)
+        expect(command_line.valid?).to be false
+      end
+
       it 'should invalidate command line with extra space at the end' do
         command_line = described_class.new('I 10 20 ')
         expect(command_line.valid?).to be false

@@ -17,7 +17,7 @@ module Commands
     private
 
     def valid_format?
-      !!@exec_line.match(/^S$/)
+      @exec_line != nil && !!@exec_line.match(/^S$/)
     end
   end
 end

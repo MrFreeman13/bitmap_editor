@@ -22,7 +22,7 @@ module Commands
     end
 
     def valid?
-      @exec_line && valid_format? && valid_params?
+      valid_format? && valid_params?
     end
 
     private
@@ -32,7 +32,7 @@ module Commands
     end
 
     def valid_format?
-      !!@exec_line.match(/^I \d+ \d+$/)
+      @exec_line != nil && !!@exec_line.match(/^I \d+ \d+$/)
     end
 
     def valid_params?
