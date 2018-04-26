@@ -14,4 +14,14 @@ describe BitmapEditor do
   it 'should pass if file has correct command' do
     expect { subject.run('spec/fixtures/correct_content.txt') }.to output("There is no image\n").to_stdout
   end
+
+  it 'should have a layout for correct input file' do
+    subject.run('spec/fixtures/correct_content.txt')
+    expect(subject.layout).to be_truthy
+  end
+
+  it 'should have a layout for incorrect input file' do
+    subject.run('spec/fixtures/incorrect_content.txt')
+    expect(subject.layout).to be_truthy
+  end
 end
