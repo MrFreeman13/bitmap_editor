@@ -5,6 +5,8 @@ module Commands
     def perform
       if valid?
         show_content
+      else
+        raise 'Invalid Show command format'
       end
     end
 

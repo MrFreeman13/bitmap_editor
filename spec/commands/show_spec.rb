@@ -28,6 +28,11 @@ describe Commands::Show do
       it 'should show the message if image is empty' do
         expect { described_class.new('S').perform }.to output("The image is empty\n").to_stdout
       end
+
+      it 'should raise an exception for fail validation while performing' do
+        expect { described_class.new('S ').perform }.
+          to raise_error(StandardError, 'Invalid Show command format')
+      end
     end
   end
 end
