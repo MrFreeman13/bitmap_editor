@@ -1,3 +1,5 @@
+require 'commands/create'
+
 class BitmapEditor
   attr_reader :layout
 
@@ -10,9 +12,11 @@ class BitmapEditor
 
     File.open(file).each do |line|
       line = line.chomp
-      case line
+      case line[0]
       when 'S'
         puts 'There is no image'
+      when 'I'
+        @layout = Commands::Create.new(line, layout).perform
       else
         puts 'unrecognised command :('
       end
