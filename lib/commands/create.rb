@@ -21,7 +21,7 @@ module Commands
 
     def valid_params?
       parse_coordinates
-      @m.between?(COLUMN_NUMBER_MIN, COLUMN_NUMBER_MAX) && @n.between?(ROW_NUMBER_MIN, ROW_NUMBER_MAX)
+      @n.between?(COLUMN_NUMBER_MIN, COLUMN_NUMBER_MAX) && @m.between?(ROW_NUMBER_MIN, ROW_NUMBER_MAX)
     end
 
     def parse_coordinates
