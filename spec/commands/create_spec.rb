@@ -46,4 +46,16 @@ describe Commands::Create do
       end
     end
   end
+
+  describe '#perform' do
+    it 'should return array for correct params' do
+      layout = described_class.new('I 10 15').perform
+      expect(layout.is_a?(Array)).to be true
+    end
+
+    it 'should create 3 * 4 image' do
+      layout = described_class.new('I 4 3').perform
+      expect(layout).to eq(%w(OOOO OOOO OOOO))
+    end
+  end
 end

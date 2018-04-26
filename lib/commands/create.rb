@@ -5,8 +5,16 @@ module Commands
     START_X = START_Y = 1
     DEFAULT_COLOUR = 'O'
 
-    def initialize(line)
+    def initialize(line, layout = [])
       @exec_line = line
+      @layout = layout
+    end
+
+    def perform
+      if valid?
+        parse_coordinates
+        draw
+      end
     end
 
     def valid?
@@ -14,6 +22,10 @@ module Commands
     end
 
     private
+
+    def draw
+      @layout = Array.new(@m) { DEFAULT_COLOUR * @n }
+    end
 
     def valid_format?
       !!@exec_line.match(/^I \d+ \d+$/)
@@ -26,8 +38,8 @@ module Commands
 
     def parse_coordinates
       coordinates = @exec_line.scan(/\d+/).map(&:to_i)
-      @n = coordinates[0]
-      @m = coordinates[1]
+      @n ||= coordinates[0]
+      @m ||= coordinates[1]
     end
   end
 end
