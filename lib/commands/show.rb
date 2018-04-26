@@ -15,8 +15,12 @@ module Commands
     private
 
     def show_content
-      @layout.each do |row|
-        puts row
+      if @layout.any?
+        @layout.each do |row|
+          puts row
+        end
+      else
+        puts 'The image is empty'
       end
     end
   end

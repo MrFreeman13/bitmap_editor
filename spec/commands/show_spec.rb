@@ -24,6 +24,10 @@ describe Commands::Show do
         image = %w(OOOO CCCC OKKO)
         expect { described_class.new('S', image).perform }.to output("OOOO\nCCCC\nOKKO\n").to_stdout
       end
+
+      it 'should show the message if image is empty' do
+        expect { described_class.new('S').perform }.to output("The image is empty\n").to_stdout
+      end
     end
   end
 end
