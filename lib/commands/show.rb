@@ -22,7 +22,7 @@ module Commands
           puts row
         end
       else
-        puts 'The image is empty'
+        puts 'There is no image'
       end
     end
   end
