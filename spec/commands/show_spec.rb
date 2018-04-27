@@ -13,7 +13,7 @@ describe Commands::Show do
     end
 
     it 'should invalidate command line with extra character at the end' do
-      command_line = described_class.new('S^')
+      command_line = described_class.new('S ^')
       expect(command_line.valid?).to be false
     end
   end
