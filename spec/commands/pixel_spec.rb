@@ -23,4 +23,23 @@ describe Commands::Pixel do
       end
     end
   end
+
+  describe '#perform' do
+    let(:layout) { %w(OOOO OOOO OOOO) }
+
+    it 'should colour pixel XY with presented colour' do
+      updated_layout = described_class.new('L 1 3 A', layout).perform
+      expect(updated_layout).to eq(%w(OOOO OOOO AOOO))
+    end
+
+    it 'should raise an exception if XY pixel is out of image' do
+      expect { described_class.new('L 10 3 A', layout).perform }.
+        to raise_error(StandardError, 'Invalid Pixel command coordinates - pixel is out of image')
+    end
+
+    it 'should raise an exception if command has wrong format' do
+      expect { described_class.new('L 3 3 q', layout).perform }.
+        to raise_error(StandardError, 'Invalid Create command format')
+    end
+  end
 end

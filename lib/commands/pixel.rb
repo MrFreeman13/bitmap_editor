@@ -2,9 +2,24 @@ require_relative 'command'
 
 module Commands
   class Pixel < Command
+    def perform
+      if valid?
+        parse_params
+        draw
+      elsif !valid_params?
+        raise 'Invalid Pixel command coordinates - pixel is out of image'
+      else
+        raise 'Invalid Create command format'
+      end
+    end
 
     private
-    
+
+    def draw
+      @layout[@y - 1][@x - 1] = @colour
+      @layout
+    end
+
     def valid_format?
       @exec_line != nil && !!@exec_line.match(/^L \d+ \d+ [A-Z]$/)
     end
