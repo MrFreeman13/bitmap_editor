@@ -1,5 +1,5 @@
-require 'commands/create'
-require 'commands/show'
+require_relative 'commands/create'
+require_relative 'commands/show'
 
 class BitmapEditor
   attr_reader :layout
