@@ -29,20 +29,14 @@ describe BitmapEditor do
     end
   end
 
-  describe 'create command' do
-    it 'should process create command for correct input file' do
-      subject.run('spec/fixtures/commands/create/valid.txt')
+  describe 'commands' do
+    it 'should process create command' do
+      expect { subject.run('spec/fixtures/commands/create/create.txt') }.not_to output("unrecognised command :(\n").to_stdout
+    end
+
+    it 'should process create command and update layout' do
+      subject.run('spec/fixtures/commands/create/create.txt')
       expect(subject.layout).to eq(%w(OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO))
-    end
-
-    it 'should process create command for incorrect input file 1' do
-      expect { subject.run('spec/fixtures/commands/create/out_of_range_coordinates.txt') }.
-        to raise_error(StandardError, 'Invalid Create command coordinates: out of allowed range')
-    end
-
-    it 'should process I command for incorrect input file 2' do
-      expect { subject.run('spec/fixtures/commands/create/invalid_format.txt') }.
-        to raise_error(StandardError, 'Invalid Create command format')
     end
   end
 
