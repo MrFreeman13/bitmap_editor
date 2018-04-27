@@ -1,6 +1,7 @@
 require_relative 'commands/create'
 require_relative 'commands/show'
 require_relative 'commands/clear'
+require_relative 'commands/pixel'
 
 class BitmapEditor
   attr_reader :layout
@@ -21,6 +22,8 @@ class BitmapEditor
         @layout = Commands::Create.new(line, layout).perform
       when 'C'
         @layout = Commands::Clear.new(line, layout).perform
+      when 'L'
+        @layout = Commands::Pixel.new(line, layout).perform
       else
         puts 'unrecognised command :('
       end
