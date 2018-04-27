@@ -1,4 +1,5 @@
 require 'commands/create'
+require 'commands/show'
 
 class BitmapEditor
   attr_reader :layout
@@ -14,7 +15,7 @@ class BitmapEditor
       line = line.chomp
       case line[0]
       when 'S'
-        puts 'There is no image'
+        Commands::Show.new(line, layout).perform
       when 'I'
         @layout = Commands::Create.new(line, layout).perform
       else

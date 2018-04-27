@@ -45,4 +45,11 @@ describe BitmapEditor do
         to raise_error(StandardError, 'Invalid Create command format')
     end
   end
+
+
+  describe 'show command' do
+    it 'should process show command' do
+      expect { subject.run('spec/fixtures/commands/show/show.txt') }.not_to output("unrecognised command :(\n").to_stdout
+    end
+  end
 end
