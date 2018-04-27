@@ -30,20 +30,28 @@ describe BitmapEditor do
   end
 
   describe 'commands' do
-    it 'should process create command' do
-      expect { subject.run('spec/fixtures/commands/create/create.txt') }.not_to output("unrecognised command :(\n").to_stdout
+    describe 'create' do
+      it 'should process create command' do
+        expect { subject.run('spec/fixtures/commands/create/create.txt') }.not_to output("unrecognised command :(\n").to_stdout
+      end
+
+      it 'should process create command and update layout' do
+        subject.run('spec/fixtures/commands/create/create.txt')
+        expect(subject.layout).to eq(%w(OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO))
+      end
     end
 
-    it 'should process create command and update layout' do
-      subject.run('spec/fixtures/commands/create/create.txt')
-      expect(subject.layout).to eq(%w(OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO OOOOO))
+
+    describe 'show' do
+      it 'should process show command' do
+        expect { subject.run('spec/fixtures/commands/show/show.txt') }.not_to output("unrecognised command :(\n").to_stdout
+      end
     end
-  end
 
-
-  describe 'show command' do
-    it 'should process show command' do
-      expect { subject.run('spec/fixtures/commands/show/show.txt') }.not_to output("unrecognised command :(\n").to_stdout
+    describe 'clear' do
+      it 'should process clear command' do
+        expect { subject.run('spec/fixtures/commands/clear/clear.txt') }.not_to output("unrecognised command :(\n").to_stdout
+      end
     end
   end
 end
