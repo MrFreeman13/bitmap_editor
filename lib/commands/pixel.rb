@@ -21,7 +21,7 @@ module Commands
     end
 
     def valid_format?
-      @exec_line != nil && !!@exec_line.match(/^L \d+ \d+ [A-Z]$/)
+      @exec_line != nil && !!@exec_line.match(/^L [1-9]\d* [1-9]\d* [A-Z]$/)
     end
 
     def valid_params?

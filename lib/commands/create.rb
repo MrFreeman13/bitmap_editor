@@ -20,7 +20,7 @@ module Commands
     end
 
     def valid_format?
-      @exec_line != nil && !!@exec_line.match(/^I \d+ \d+$/)
+      @exec_line != nil && !!@exec_line.match(/^I [1-9]\d* [1-9]\d*$/)
     end
 
     def valid_params?
