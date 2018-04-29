@@ -65,5 +65,11 @@ describe BitmapEditor do
         expect { subject.run('spec/fixtures/commands/vertical/vertical.txt') }.not_to output("unrecognised command :(\n").to_stdout
       end
     end
+
+    describe 'horizontal' do
+      it 'should process horizontal command' do
+        expect { subject.run('spec/fixtures/commands/horizontal/horizontal.txt') }.not_to output("unrecognised command :(\n").to_stdout
+      end
+    end
   end
 end
