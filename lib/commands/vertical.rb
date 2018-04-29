@@ -10,7 +10,7 @@ module Commands
 
     def valid_params?
       parse_params
-      inside_image?
+      inside_image? && (@y2 - @y1) != 0
     end
 
     def inside_image?
@@ -20,8 +20,13 @@ module Commands
     def parse_params
       coordinates = @exec_line.scan(/\d+/).map(&:to_i)
       @x ||= coordinates[0]
-      @y1 ||= coordinates[1]
-      @y2 ||= coordinates[2]
+      if coordinates[2] > coordinates[1]
+        @y1 ||= coordinates[1]
+        @y2 ||= coordinates[2]
+      else
+        @y1 ||= coordinates[2]
+        @y2 ||= coordinates[1]
+      end
       @colour ||= @exec_line[-1]
     end
   end
