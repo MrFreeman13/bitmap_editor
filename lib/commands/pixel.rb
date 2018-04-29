@@ -9,7 +9,7 @@ module Commands
       elsif !valid_params?
         raise 'Invalid Pixel command coordinates - pixel is out of image'
       else
-        raise 'Invalid Create command format'
+        raise 'Invalid Pixel command format'
       end
     end
 

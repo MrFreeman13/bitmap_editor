@@ -39,7 +39,7 @@ describe Commands::Pixel do
 
     it 'should raise an exception if command has wrong format' do
       expect { described_class.new('L 3 3 q', layout).perform }.
-        to raise_error(StandardError, 'Invalid Create command format')
+        to raise_error(StandardError, 'Invalid Pixel command format')
     end
   end
 end
