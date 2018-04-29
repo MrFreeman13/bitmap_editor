@@ -38,4 +38,28 @@ describe Commands::Vertical do
       end
     end
   end
+
+  describe '#perform' do
+    let(:layout) { %w(AOOO OOOO OOOO OOOO OOOA) }
+
+    it 'should draw a vertical segment in colour C in column 3 between 1 and 4 rows' do
+      updated_layout = described_class.new('V 3 1 4 C', layout).perform
+      expect(updated_layout).to eq(%w(AOCO OOCO OOCO OOCO OOOA))
+    end
+
+    it 'should raise an exception if Y1 Y2 rows are out of image' do
+      expect { described_class.new('V 2 10 9 W', layout).perform }.
+        to raise_error(StandardError, 'Invalid Vertical command coordinates')
+    end
+
+    it 'should raise an exception if Y1 Y2 rows has equal numbers' do
+      expect { described_class.new('V 2 4 4 W', layout).perform }.
+        to raise_error(StandardError, 'Invalid Vertical command coordinates')
+    end
+
+    it 'should raise an exception if command has wrong format' do
+      expect { described_class.new('V 2 4 0 W', layout).perform }.
+        to raise_error(StandardError, 'Invalid Vertical command format')
+    end
+  end
 end
