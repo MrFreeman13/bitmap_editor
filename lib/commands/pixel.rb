@@ -16,7 +16,7 @@ module Commands
     private
 
     def draw
-      @layout[@y - 1][@x - 1] = @colour
+      @layout[@y][@x] = @colour
       @layout
     end
 
@@ -35,8 +35,8 @@ module Commands
 
     def parse_params
       coordinates = @exec_line.scan(/\d+/).map(&:to_i)
-      @x ||= coordinates[0]
-      @y ||= coordinates[1]
+      @x ||= coordinates[0] - 1
+      @y ||= coordinates[1] - 1
       @colour ||= @exec_line[-1]
     end
   end
