@@ -1,9 +1,9 @@
-require_relative 'commands/create'
-require_relative 'commands/show'
-require_relative 'commands/clear'
-require_relative 'commands/pixel'
-require_relative 'commands/vertical'
-require_relative 'commands/horizontal'
+require_relative 'commands/create/create'
+require_relative 'commands/show/show'
+require_relative 'commands/clear/clear'
+require_relative 'commands/pixel/pixel'
+require_relative 'commands/vertical/vertical'
+require_relative 'commands/horizontal/horizontal'
 
 class BitmapEditor
   COMMANDS = {

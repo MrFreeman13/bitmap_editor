@@ -1,4 +1,4 @@
-require_relative '../../lib/commands/pixel'
+require_relative '../../lib/commands/pixel/pixel'
 
 describe Commands::Pixel do
   describe '#valid' do

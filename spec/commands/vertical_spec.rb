@@ -1,4 +1,4 @@
-require_relative '../../lib/commands/vertical'
+require_relative '../../lib/commands/vertical/vertical'
 
 describe Commands::Vertical do
   describe '#valid' do

@@ -1,17 +1,16 @@
-require_relative 'command'
+require_relative '../command'
+require_relative 'show_validator'
 
 module Commands
   class Show < Command
+    include ShowValidator
+
     def perform
       if valid?
         show_content
       else
         raise 'Invalid Show command format'
       end
-    end
-
-    def valid?
-      @exec_line != nil && !!@exec_line.match(/^S$/)
     end
 
     private

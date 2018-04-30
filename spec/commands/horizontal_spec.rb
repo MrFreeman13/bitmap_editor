@@ -1,4 +1,4 @@
-require_relative '../../lib/commands/horizontal'
+require_relative '../../lib/commands/horizontal/horizontal'
 
 describe Commands::Horizontal do
   describe '#valid' do

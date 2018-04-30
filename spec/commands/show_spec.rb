@@ -1,4 +1,4 @@
-require_relative '../../lib/commands/show'
+require_relative '../../lib/commands/show/show'
 
 describe Commands::Show do
   describe '#valid' do

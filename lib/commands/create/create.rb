@@ -1,7 +1,10 @@
-require_relative 'command'
+require_relative '../command'
+require_relative 'create_validator'
 
 module Commands
   class Create < Command
+    include CreateValidator
+
     def perform
       if valid?
         parse_coordinates
@@ -17,15 +20,6 @@ module Commands
 
     def draw
       @layout = Array.new(@m) { DEFAULT_COLOUR * @n }
-    end
-
-    def valid_format?
-      @exec_line != nil && !!@exec_line.match(/^I [1-9]\d* [1-9]\d*$/)
-    end
-
-    def valid_params?
-      parse_coordinates
-      @n.between?(COLUMN_NUMBER_MIN, COLUMN_NUMBER_MAX) && @m.between?(ROW_NUMBER_MIN, ROW_NUMBER_MAX)
     end
 
     def parse_coordinates

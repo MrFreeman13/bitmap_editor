@@ -1,4 +1,4 @@
-require_relative '../../lib/commands/create'
+require_relative '../../lib/commands/create/create'
 
 describe Commands::Create do
   describe '#valid' do

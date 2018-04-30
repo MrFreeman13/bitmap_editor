@@ -1,7 +1,10 @@
-require_relative 'command'
+require_relative '../command'
+require_relative 'vertical_validator'
 
 module Commands
   class Vertical < Command
+    include VerticalValidator
+
     def perform
       if valid?
         parse_params
@@ -20,19 +23,6 @@ module Commands
         @layout[row][@x] = @colour
       end
       @layout
-    end
-
-    def valid_format?
-      @exec_line != nil && !!@exec_line.match(/^V [1-9]\d* [1-9]\d* [1-9]\d* [A-Z]$/)
-    end
-
-    def valid_params?
-      parse_params
-      inside_image? && (@y2 - @y1) != 0
-    end
-
-    def inside_image?
-      @y1 <= @layout.size && @y2 <= @layout.size && @x <= @layout.first.size
     end
 
     def parse_params

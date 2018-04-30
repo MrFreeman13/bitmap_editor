@@ -1,17 +1,16 @@
-require_relative 'command'
+require_relative '../command'
+require_relative 'clear_validator'
 
 module Commands
   class Clear < Command
+    include ClearValidator
+
     def perform
       if valid?
         clear_table
       else
         raise 'Invalid Clear command format'
       end
-    end
-
-    def valid?
-      @exec_line != nil && !!@exec_line.match(/^C$/)
     end
 
     private

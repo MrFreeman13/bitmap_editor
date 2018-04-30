@@ -1,4 +1,4 @@
-require_relative '../../lib/commands/clear'
+require_relative '../../lib/commands/clear/clear'
 
 describe Commands::Clear do
   describe '#valid' do

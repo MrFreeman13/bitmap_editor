@@ -1,7 +1,10 @@
-require_relative 'command'
+require_relative '../command'
+require_relative 'pixel_validator'
 
 module Commands
   class Pixel < Command
+    include PixelValidator
+
     def perform
       if valid?
         parse_params
