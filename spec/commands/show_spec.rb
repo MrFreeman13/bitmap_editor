@@ -30,7 +30,7 @@ describe Commands::Show do
 
     it 'should raise an exception for fail validation while performing' do
       expect { described_class.new('S ').perform }.
-        to raise_error(StandardError, 'Invalid Show command format')
+        to raise_error(Commands::CommandError, "Invalid Show command format in line: 'S '")
     end
   end
 end

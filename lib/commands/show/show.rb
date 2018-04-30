@@ -9,7 +9,7 @@ module Commands
       if valid?
         show_content
       else
-        raise 'Invalid Show command format'
+        raise CommandError.new('Invalid Show command format', @exec_line)
       end
     end
 

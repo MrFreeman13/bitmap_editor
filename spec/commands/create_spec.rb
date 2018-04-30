@@ -65,12 +65,14 @@ describe Commands::Create do
 
     it 'should raise an error with validation message for invalid command format' do
       expect { described_class.new('I 251 01 05 ').perform }.
-        to raise_error(StandardError, 'Invalid Create command format')
+        to raise_error(Commands::CommandError,
+                       "Invalid Create command format in line: 'I 251 01 05 '")
     end
 
     it 'should raise an error with validation message for out of range coordinates params' do
       expect { described_class.new('I 251 15').perform }.
-        to raise_error(StandardError, 'Invalid Create command coordinates: out of allowed range')
+        to raise_error(Commands::CommandError,
+                       "Invalid Create command coordinates: out of allowed range in line: 'I 251 15'")
     end
   end
 end

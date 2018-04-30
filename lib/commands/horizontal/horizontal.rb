@@ -10,9 +10,9 @@ module Commands
         parse_params
         draw
       elsif !valid_params?
-        raise 'Invalid Horizontal command coordinates'
+        raise CommandError.new('Invalid Horizontal command coordinates', @exec_line)
       else
-        raise 'Invalid Horizontal command format'
+        raise CommandError.new('Invalid Horizontal command format', @exec_line)
       end
     end
 

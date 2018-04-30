@@ -10,9 +10,9 @@ module Commands
         parse_params
         draw
       elsif !valid_params?
-        raise 'Invalid Pixel command coordinates - pixel is out of image'
+        raise CommandError.new('Invalid Pixel command coordinates - pixel is out of image', @exec_line)
       else
-        raise 'Invalid Pixel command format'
+        raise CommandError.new('Invalid Pixel command format', @exec_line)
       end
     end
 

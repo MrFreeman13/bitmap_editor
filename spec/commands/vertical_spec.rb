@@ -49,17 +49,17 @@ describe Commands::Vertical do
 
     it 'should raise an exception if Y1 Y2 rows are out of image' do
       expect { described_class.new('V 2 10 9 W', layout).perform }.
-        to raise_error(StandardError, 'Invalid Vertical command coordinates')
+        to raise_error(Commands::CommandError, "Invalid Vertical command coordinates in line: 'V 2 10 9 W'")
     end
 
     it 'should raise an exception if Y1 Y2 rows has equal numbers' do
       expect { described_class.new('V 2 4 4 W', layout).perform }.
-        to raise_error(StandardError, 'Invalid Vertical command coordinates')
+        to raise_error(Commands::CommandError, "Invalid Vertical command coordinates in line: 'V 2 4 4 W'")
     end
 
     it 'should raise an exception if command has wrong format' do
       expect { described_class.new('V 2 4 0 W', layout).perform }.
-        to raise_error(StandardError, 'Invalid Vertical command format')
+        to raise_error(Commands::CommandError, "Invalid Vertical command format in line: 'V 2 4 0 W'")
     end
   end
 end

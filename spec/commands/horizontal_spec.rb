@@ -54,17 +54,17 @@ describe Commands::Horizontal do
 
     it 'should raise an exception if X1 X2 columns are out of image' do
       expect { described_class.new('H 9 10 3 S', layout).perform }.
-        to raise_error(StandardError, 'Invalid Horizontal command coordinates')
+        to raise_error(Commands::CommandError, "Invalid Horizontal command coordinates in line: 'H 9 10 3 S'")
     end
 
     it 'should raise an exception if X1 X2 columns has equal numbers' do
       expect { described_class.new('H 3 3 1 S', layout).perform }.
-        to raise_error(StandardError, 'Invalid Horizontal command coordinates')
+        to raise_error(Commands::CommandError, "Invalid Horizontal command coordinates in line: 'H 3 3 1 S'")
     end
 
     it 'should raise an exception if command has wrong format' do
       expect { described_class.new('H 2 6 3 1', layout).perform }.
-        to raise_error(StandardError, 'Invalid Horizontal command format')
+        to raise_error(Commands::CommandError, "Invalid Horizontal command format in line: 'H 2 6 3 1'")
     end
   end
 end

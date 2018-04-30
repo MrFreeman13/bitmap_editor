@@ -27,12 +27,12 @@ describe Commands::Clear do
 
     it 'should raise an exception for invalid clear command format' do
       expect { described_class.new('C @##').perform }.
-        to raise_error(StandardError, 'Invalid Clear command format')
+        to raise_error(Commands::CommandError, "Invalid Clear command format in line: 'C @##'")
     end
 
     it 'should raise an exception for clear table on empty layout' do
       expect { described_class.new('C').perform }.
-        to raise_error(StandardError, "Can't clear the table for no image")
+        to raise_error(Commands::CommandError, "Can't clear the table for no image in line: 'C'")
     end
   end
 end

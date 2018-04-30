@@ -1,3 +1,5 @@
+require_relative 'command_error'
+
 module Commands
   class Command
     COLUMN_NUMBER_MIN = ROW_NUMBER_MIN = 1

@@ -10,9 +10,9 @@ module Commands
         parse_coordinates
         draw
       elsif !valid_format?
-        raise 'Invalid Create command format'
+        raise CommandError.new('Invalid Create command format', @exec_line)
       else
-        raise 'Invalid Create command coordinates: out of allowed range'
+        raise CommandError.new('Invalid Create command coordinates: out of allowed range', @exec_line)
       end
     end
 
