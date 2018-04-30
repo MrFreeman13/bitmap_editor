@@ -24,6 +24,7 @@ module Commands
       else
         puts 'There is no image'
       end
+      @layout
     end
   end
 end

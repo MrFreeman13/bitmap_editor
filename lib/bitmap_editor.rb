@@ -6,6 +6,15 @@ require_relative 'commands/vertical'
 require_relative 'commands/horizontal'
 
 class BitmapEditor
+  COMMANDS = {
+    'S' => 'Show',
+    'I' => 'Create',
+    'C' => 'Clear',
+    'L' => 'Pixel',
+    'V' => 'Vertical',
+    'H' => 'Horizontal'
+  }.freeze
+
   attr_reader :layout
 
   def initialize
@@ -17,20 +26,10 @@ class BitmapEditor
 
     File.open(file).each do |line|
       line = line.chomp
-      case line[0]
-      when 'S'
-        Commands::Show.new(line, layout).perform
-      when 'I'
-        @layout = Commands::Create.new(line, layout).perform
-      when 'C'
-        @layout = Commands::Clear.new(line, layout).perform
-      when 'L'
-        @layout = Commands::Pixel.new(line, layout).perform
-      when 'V'
-        @layout = Commands::Vertical.new(line, layout).perform
-      when 'H'
-        @layout = Commands::Horizontal.new(line, layout).perform
-      else
+
+      if COMMANDS[line[0]]
+        @layout = Object.const_get("Commands::#{COMMANDS[line[0]]}").new(line, layout).perform
+      elsif !line.empty?
         puts 'unrecognised command :('
       end
     end
