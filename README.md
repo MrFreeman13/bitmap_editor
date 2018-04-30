@@ -1,6 +1,6 @@
 # Bitmap editor
 
-..
+Interactive bitmap editor with files I/O
 
 # Running
 

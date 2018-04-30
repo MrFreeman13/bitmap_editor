@@ -28,7 +28,7 @@ describe Commands::Show do
       expect { described_class.new('S').perform }.to output("There is no image\n").to_stdout
     end
 
-    it 'should raise an exception for fail validation while performing' do
+    it 'should raise an exception if invalid format' do
       expect { described_class.new('S ').perform }.
         to raise_error(Commands::CommandError, "Invalid Show command format in line: 'S '")
     end
